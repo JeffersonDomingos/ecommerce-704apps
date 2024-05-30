@@ -47,7 +47,7 @@
                 <td>{{ $category->name }}</td>
                 <td>
                   <a href="/categorias/{{$category->id}}/edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
-                  <form action="" method="POST" style="display:inline;">
+                  <form action="{{ route('categorias.destroy', $category->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button type="submit" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</button>

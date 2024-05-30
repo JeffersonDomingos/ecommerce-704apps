@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductsController;
 use App\Models\Category;
+use App\Models\Products;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,10 +20,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('categorias', CategoryController::class);
 
-Route::get('/usuarios', function () {
-    return view('admin.usuarios');
-});
-
-Route::get('/produtos', function () {
-    return view('admin.produtos');
-});
+Route::resource('produtos', ProductsController::class);

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Produtos')
 
 @section('content_header')
     <h1 class="m-0 text-dark">Dashboard</h1>
@@ -21,22 +21,22 @@
 </section>
 
 <!-- Main content -->
-<section class="">
+<section class="content">
 
   <div class="row">
   	<div class="col-md-12">
   		<div class="box box-primary">
             
             <div class="box-header">
-              <a href="/ecommerce/admin/products/create" class="btn btn-success">Cadastrar Produto</a>
+              <a href="/produtos/create" class="btn btn-success">Cadastrar Produto</a>
             </div>
 
             <div class="box-body no-padding">
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th style="width: 10px">#</th>
-                    <th>Nome da Produto</th>
+                    <th style="width: 10px">ID</th>
+                    <th>Nome do Produto</th>
                     <th>Preço</th>
                     <th>Largura</th>
                     <th>Altura</th>
@@ -46,21 +46,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {loop="$products"}
+                  @foreach($products as $product)
                   <tr>
-                    <td>{$value.idproduct}</td>
-                    <td>{$value.desproduct}</td>
-                    <td>{$value.vlprice}</td>
-                    <td>{$value.vlwidth}</td>
-                    <td>{$value.vlheight}</td>
-                    <td>{$value.vllength}</td>
-                    <td>{$value.vlweight}</td>
+                    <td>{{ $product->id }}</td>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->price }}</td>
+                    <td>{{ $product->vlwidth }}</td>
+                    <td>{{ $product->vlheigth }}</td>
+                    <td>{{ $product->vllength }}</td>
+                    <td>{{ $product->vlweigth }}</td>
                     <td>
-                      <a href="/ecommerce/admin/products/{$value.idproduct}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
-                      <a href="/ecommerce/admin/products/{$value.idproduct}/delete/" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
+                      <a href="/ecommerce/admin/products/{{ $product->id }}/edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
+                      <form action="" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</button>
+                      </form>
                     </td>
                   </tr>
-                  {/loop}
+                  @endforeach
                 </tbody>
               </table>
             </div>
