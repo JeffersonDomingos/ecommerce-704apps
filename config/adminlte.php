@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b>704</b> ECOMMERCE',
+    'logo_img' => 'vendor/adminlte/dist/img/logo704.png',
+    'logo_img_class' => 'brand-image img elevation',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => '704 Apps',
 
     /*
     |--------------------------------------------------------------------------
@@ -308,84 +308,67 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Pesquisar',
         ],
         [
             'text' => 'blog',
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
+        ['header' => 'Configurações da conta'],
         [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
+            'text' => 'Perfil Admin',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
+            'text' => 'Redefinição de senha',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        
+        ['header' => 'Ações'],
         [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
+            'text' => 'Usuários',
+            'icon_color' => 'gray',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
+                    'text' => 'Listar Usuários',
+                    'url' => '/usuarios',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
+                    'text' => 'Cadastrar Usuários',
+                    'url' => '/usuarios/create',
                 ],
             ],
         ],
-        ['header' => 'labels'],
-        [
-            'text' => 'Usuários',
-            'icon_color' => 'red',
-            'url' => '/usuarios',
-        ],
         [
             'text' => 'Produtos',
-            'icon_color' => 'yellow',
-            'url' => '/produtos',
+            'icon_color' => 'gray',
+            'submenu' => [
+                [
+                    'text' => 'Listar Produtos',
+                    'url' => '/produtos',
+                ],
+                [
+                    'text' => 'Cadastrar Produto',
+                    'url' => '/produtos/create',
+                ],
+            ],
         ],
         [
             'text' => 'Categorias',
-            'icon_color' => 'cyan',
-            'url' => '/categorias',
+            'icon_color' => 'gray',
+            'submenu' => [
+                [
+                    'text' => 'Listar Categorias',
+                    'url' => '/categorias',
+                ],
+                [
+                    'text' => 'Cadastrar Categoria',
+                    'url' => '/categorias/create',
+                ],
+            ],
         ],
     ],
 
