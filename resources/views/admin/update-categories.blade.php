@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Categoria')
+@section('title', 'AdminLTE')
 
 @section('content_header')
 <h1>Editar Categoria</h1>

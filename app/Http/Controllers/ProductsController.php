@@ -32,17 +32,17 @@ class ProductsController extends Controller
         {
             $request->validate([
                 'name' => 'required|string|max:255',
-                'price' => 'required|decimal|',
-                'vlwidth' => 'required|decimal|',
-                'vlheigth' => 'required|decimal|',
-                'vllength' => 'required|decimal|',
-                'vlweigth' => 'required|decimal|',
+                'price' => 'required|decimal:8,2',
+                'vlwidth' => 'required|decimal:8,2',
+                'vlheigth' => 'required|decimal:8,2',
+                'vllength' => 'required|decimal:8,2',
+                'vlweigth' => 'required|decimal:8,2',
             ]);
-    
+            
             Products::create($request->all());
     
             return redirect()->route('products.index')
-                             ->with('success', 'Categoria criada com sucesso!');
+                             ->with('success', 'Produto cadastrado com sucesso!');
         }
     }
 
