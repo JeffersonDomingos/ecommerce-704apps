@@ -11,8 +11,9 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/produtos">Produtos</a></li>
-                <li><a href="/categorias">Categorias</a></li>
+                <li><a href="/products-page">Produtos</a></li>
+                <li><a href="/categories-page">Categorias</a></li>
+                <li><a href="/cart-page">Carrinho</a></li>
             </ul>
         </nav>
     </header>

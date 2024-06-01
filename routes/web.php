@@ -23,3 +23,15 @@ Route::resource('/admin/produtos', ProductsController::class);
 
 Route::resource('/admin/usuarios', UserController::class);
 
+Route::get('/products-page', function () {
+    return view('products-page');
+});
+
+Route::get('/categories-page', function () {
+    return view('category-page');
+});
+
+Route::get('/cart-page', function () {
+    return view('cart-page');
+});
+
