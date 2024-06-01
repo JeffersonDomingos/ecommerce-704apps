@@ -37,7 +37,7 @@
                   <tr>
                     <th style="width: 10px">ID</th>
                     <th>Nome do Produto</th>
-                    <th>Preço</th>
+                    <th>Preço R$</th>
                     <th>Largura</th>
                     <th>Altura</th>
                     <th>Comprimento</th>
@@ -56,8 +56,8 @@
                     <td>{{ $product->vllength }}</td>
                     <td>{{ $product->vlweigth }}</td>
                     <td>
-                      <a href="/ecommerce/admin/products/{{ $product->id }}/edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
-                      <form action="" method="POST" style="display:inline;">
+                      <a href="/produtos/{{ $product->id }}/edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
+                      <form action="{{route('produtos.destroy', $product->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</button>

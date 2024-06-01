@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/admin/home',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -315,17 +315,6 @@ return [
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
-        ['header' => 'Configurações da conta'],
-        [
-            'text' => 'Perfil Admin',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'Redefinição de senha',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
         
         ['header' => 'Ações'],
         [
@@ -333,12 +322,12 @@ return [
             'icon_color' => 'gray',
             'submenu' => [
                 [
-                    'text' => 'Listar Usuários',
-                    'url' => '/usuarios',
+                    'text' => 'Lista de Usuários',
+                    'url' => '/admin/usuarios',
                 ],
                 [
                     'text' => 'Cadastrar Usuários',
-                    'url' => '/usuarios/create',
+                    'url' => '/admin/usuarios/create',
                 ],
             ],
         ],
@@ -347,12 +336,12 @@ return [
             'icon_color' => 'gray',
             'submenu' => [
                 [
-                    'text' => 'Listar Produtos',
-                    'url' => '/produtos',
+                    'text' => 'Lista de Produtos',
+                    'url' => '/admin/produtos',
                 ],
                 [
                     'text' => 'Cadastrar Produto',
-                    'url' => '/produtos/create',
+                    'url' => '/admin/produtos/create',
                 ],
             ],
         ],
@@ -361,12 +350,12 @@ return [
             'icon_color' => 'gray',
             'submenu' => [
                 [
-                    'text' => 'Listar Categorias',
-                    'url' => '/categorias',
+                    'text' => 'Lista de Categorias',
+                    'url' => '/admin/categorias',
                 ],
                 [
                     'text' => 'Cadastrar Categoria',
-                    'url' => '/categorias/create',
+                    'url' => '/admin/categorias/create',
                 ],
             ],
         ],

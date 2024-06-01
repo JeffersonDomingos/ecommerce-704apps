@@ -16,7 +16,7 @@
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Nova Produto</h3>
+                        <h3 class="box-title">Novo Produto</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
