@@ -4,7 +4,6 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Dashboard</h1>
 @stop
 
 @section('content')
@@ -16,7 +15,7 @@
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Novo Usuário</h3>
+                        <h3 class="box-title pt-3">Novo Usuário</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->

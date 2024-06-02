@@ -3,21 +3,17 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Dashboard</h1>
+    
 @stop
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 
 <!-- Content Header (Page header) -->
-<section class="content-header">
-  <h1>
+<section class="px-0">
+  <h2 class="pt-3">
     Lista de Categorias
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="/home"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active"><a href="">Categorias</a></li>
-  </ol>
+  </h2>
 </section>
 
 <!-- Main content -->
@@ -28,7 +24,7 @@
       <div class="box box-primary">
             
         <div class="box-header">
-          <a href="/categorias/create" class="btn btn-success">Cadastrar Categoria</a>
+          <a href="/categorias/create" class="mb-3 btn btn-success">Cadastrar Categoria</a>
         </div>
 
         <div class="box-body no-padding">

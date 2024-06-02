@@ -3,21 +3,18 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-<h1 class="m-0 text-dark">Dashboard</h1>
+
 @stop
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 
 <!-- Content Header (Page header) -->
-<section class="content-header">
-  <h1>
+<section class="px-0 pt-3">
+  <h2>
     Lista de Usuários
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="/home"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active"><a href="">Usuários</a></li>
-  </ol>
+  </h2>
+  
 </section>
 
 <!-- Main content -->
