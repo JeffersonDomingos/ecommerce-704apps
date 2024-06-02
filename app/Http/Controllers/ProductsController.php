@@ -28,7 +28,8 @@ class ProductsController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    { {
+     {         
+         
             $request->validate([
                 'name' => 'required|string|max:255',
                 'price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
@@ -36,15 +37,22 @@ class ProductsController extends Controller
                 'vlheigth' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
                 'vllength' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
                 'vlweigth' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
+            
+            
+            $data = $request->all();
+            
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('products', 'public');
+                $data['image'] = $imagePath;
+            }
 
+            Products::create($data);
 
-            Products::create($request->all());
-
-            return redirect()->route('produtos.index')
-                ->with('success', 'Produto cadastrado com sucesso!');
+            return redirect()->route('produtos.index')->with('success', 'Produto cadastrado com sucesso!');
         }
-    }
+    
 
     /**
      * Display the specified resource.
@@ -59,8 +67,8 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-            $product = Products::findOrFail($id);
-            return view('admin.update-products', \compact('product'));
+        $product = Products::findOrFail($id);
+        return view('admin.update-products', \compact('product'));
     }
 
     /**
@@ -71,12 +79,12 @@ class ProductsController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
-        
+
         $product = Products::findOrFail($id);
         $product->update($request->all());
 
         return redirect()->route('produtos.index')
-                         ->with('success', 'Produto atualizado com sucesso.');
+            ->with('success', 'Produto atualizado com sucesso.');
     }
     /**
      * Remove the specified resource from storage.
@@ -88,6 +96,6 @@ class ProductsController extends Controller
         $product->delete();
 
         return redirect()->route('produtos.index')
-                         ->with('success', 'Produto deletado com sucesso.');
+            ->with('success', 'Produto deletado com sucesso.');
     }
 }
