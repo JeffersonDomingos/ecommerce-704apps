@@ -17,7 +17,7 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" action="{{ route('produtos.update', $product->id) }}" method="post">
+                <form role="form" action="{{ route('produtos.update', $product->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="box-body">
@@ -34,6 +34,8 @@
                             <input type="text" class="form-control" id="vllength" name="vllength" placeholder="Digite o Digite o comprimento do Produto" value="{{ $product->vllength }}">
                             <label for="name">Peso</label>
                             <input type="text" class="form-control" id="vlweigth" name="vlweigth" placeholder="Digite o peso do Produto" value="{{ $product->vlweigth }}">
+                            <label class="mt-4" for="image">Imagem do Produto:</label>
+                            <input type="file" name="image" id="image">
                         </div>
                     </div>
                     <!-- /.box-body -->

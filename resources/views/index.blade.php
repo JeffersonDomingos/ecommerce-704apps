@@ -56,6 +56,11 @@
                     <td>{{ $product->vlheigth }}</td>
                     <td>{{ $product->vllength }}</td>
                     <td>{{ $product->vlweigth }}</td>
+                    <td style="vertical-align: middle;">
+                      @if ($product->image)
+                      <img style="display: block; margin-right: auto; margin-left: auto" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" width="100">
+                      @endif
+                    </td>
                     <td>
                     </td>
                   </tr>
@@ -76,7 +81,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="box box-primary">
-            
+
 
         <div class="box-body no-padding">
           <table class="table table-striped">
@@ -92,6 +97,11 @@
               <tr>
                 <td>{{ $category->id }}</td>
                 <td>{{ $category->name }}</td>
+                <td class="text-center" style="vertical-align: middle;">
+                  @if ($category->category_image)
+                  <img style="display: block; margin-right: auto; margin-left: auto" src="{{ asset('storage/' . $category->category_image) }}" alt="{{ $category->name }}" width="100">
+                  @endif
+                </td>
                 <td>
                 </td>
               </tr>

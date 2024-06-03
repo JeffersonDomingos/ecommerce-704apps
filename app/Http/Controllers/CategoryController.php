@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -33,13 +34,20 @@ class CategoryController extends Controller
         {
             $request->validate([
                 'name' => 'required|string|max:255',
+                'category_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
     
-            Category::create($request->all());
-    
-            return redirect()->route('categorias.index')
-                             ->with('success', 'Categoria criada com sucesso!');
+            $data = $request->all();
+
+        if ($request->hasFile('category_image')) {
+            $imagePath = $request->file('category_image')->store('categories', 'public');
+            $data['category_image'] = $imagePath;
         }
+
+        Category::create($data);
+
+        return redirect()->route('categorias.index')->with('success', 'Categoria cadastrada com sucesso!');
+    }
     }
 
     /**
@@ -66,13 +74,29 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'category_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         
         $category = Category::findOrFail($id);
-        $category->update($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('category_image')) {
+
+            $imagePath = $request->file('category_image')->store('categories', 'public');
+
+
+            if ($category->image) {
+                Storage::disk('public')->delete($category->image);
+            }
+
+
+            $data['category_image'] = $imagePath;
+        }
+
+        $category->update($data);
 
         return redirect()->route('categorias.index')
-                         ->with('success', 'Categoria atualizada com sucesso.');
+            ->with('success', 'Categoria atualizada com sucesso.');
     }
 
     /**

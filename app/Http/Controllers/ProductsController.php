@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+
 
 class ProductsController extends Controller
 {
@@ -28,31 +30,31 @@ class ProductsController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-     {         
-         
-            $request->validate([
-                'name' => 'required|string|max:255',
-                'price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
-                'vlwidth' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
-                'vlheigth' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
-                'vllength' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
-                'vlweigth' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
-            
-            
-            $data = $request->all();
-            
-            if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('products', 'public');
-                $data['image'] = $imagePath;
-            }
+    {
 
-            Products::create($data);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'vlwidth' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'vlheigth' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'vllength' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'vlweigth' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-            return redirect()->route('produtos.index')->with('success', 'Produto cadastrado com sucesso!');
+
+        $data = $request->all();
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('products', 'public');
+            $data['image'] = $imagePath;
         }
-    
+
+        Products::create($data);
+
+        return redirect()->route('produtos.index')->with('success', 'Produto cadastrado com sucesso!');
+    }
+
 
     /**
      * Display the specified resource.
@@ -78,10 +80,31 @@ class ProductsController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'vlwidth' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'vlheigth' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'vllength' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'vlweigth' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $product = Products::findOrFail($id);
-        $product->update($request->all());
+        $data = $request->all();
+
+        if ($request->hasFile('image')) {
+
+            $imagePath = $request->file('image')->store('products', 'public');
+
+
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+
+
+            $data['image'] = $imagePath;
+        }
+
+        $product->update($data);
 
         return redirect()->route('produtos.index')
             ->with('success', 'Produto atualizado com sucesso.');

@@ -3,7 +3,7 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-    
+
 @stop
 
 @section('content')
@@ -22,27 +22,33 @@
   <div class="row">
     <div class="col-md-12">
       <div class="box box-primary">
-            
+
         <div class="box-header">
-          <a href="/categorias/create" class="mb-3 btn btn-success">Cadastrar Categoria</a>
+          <a href="/admin/categorias/create" class="mb-3 btn btn-success">Cadastrar Categoria</a>
         </div>
 
         <div class="box-body no-padding">
           <table class="table table-striped">
             <thead>
               <tr>
-                <th style="width: 10px">ID</th>
-                <th>Nome da Categoria</th>
-                <th style="width: 140px">&nbsp;</th>
+                <th style="width: 10px" class="text-center">ID</th>
+                <th class="text-center">Nome da Categoria</th>
+                <th class="text-center">Imagem da Categoria</th>
+
               </tr>
             </thead>
             <tbody>
               @foreach($categories as $category)
               <tr>
-                <td>{{ $category->id }}</td>
-                <td>{{ $category->name }}</td>
-                <td>
-                  <a href="/categorias/{{$category->id}}/edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
+                <td class="text-center" style="vertical-align: middle;">{{ $category->id }}</td>
+                <td class="text-center" style="vertical-align: middle;">{{ $category->name }}</td>
+                <td class="text-center" style="vertical-align: middle;">
+                  @if ($category->category_image)
+                  <img style="display: block; margin-right: auto; margin-left: auto" src="{{ asset('storage/' . $category->category_image) }}" alt="{{ $category->name }}" width="100">
+                  @endif
+                </td>
+                <td class="text-center" style="vertical-align: middle;">
+                  <a href="/admin/categorias/{{$category->id}}/edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
                   <form action="{{ route('categorias.destroy', $category->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')

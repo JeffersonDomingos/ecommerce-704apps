@@ -17,13 +17,15 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" action="{{ route('categorias.update', $category->id) }}" method="post">
+                <form role="form" action="{{ route('categorias.update', $category->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="box-body">
                         <div class="form-group">
                             <label for="name">Nome da categoria</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome da categoria" value="{{ $category->name }}">
+                            <label class="mt-4" for="image">Imagem da Categoria:</label>
+                            <input type="file" name="category_image" id="category_image">
                         </div>
                     </div>
                     <!-- /.box-body -->
