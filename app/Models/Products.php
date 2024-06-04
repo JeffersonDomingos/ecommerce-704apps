@@ -16,6 +16,13 @@ class Products extends Model
         'vlheigth', 
         'vllength', 
         'vlweigth',
-        'image'
+        'image',
+        'category_id'
     ];
+
+    public function category() {
+
+        return $this->belongsTo(Category::class);
+
+    }
 }

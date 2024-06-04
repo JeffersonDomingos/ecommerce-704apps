@@ -23,20 +23,30 @@
                     @csrf <!-- Token de proteção CSRF -->
                     <div class="box-body">
                         <div class="form-group space-y-3">
-                            <label class="mt-4"  for="name">Nome do Produto</label>
+                            <label class="mt-4" for="name">Nome do Produto</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome do Produto" required>
-                            <label class="mt-4"  for="name">Preço</label>
+                            <label class="mt-4" for="name">Preço</label>
                             <input type="text" class="form-control" id="price" name="price" placeholder="Digite o preço do Produto" required>
-                            <label class="mt-4"  for="name">Largura</label>
+                            <label class="mt-4" for="name">Largura</label>
                             <input type="text" class="form-control" id="vlwidth" name="vlwidth" placeholder="Digite a largura do Produto" required>
-                            <label class="mt-4"  for="name">Altura</label>
+                            <label class="mt-4" for="name">Altura</label>
                             <input type="text" class="form-control" id="vlheigth" name="vlheigth" placeholder="Digite a altura do produto" required>
-                            <label class="mt-4"  for="name">Comprimento</label>
+                            <label class="mt-4" for="name">Comprimento</label>
                             <input type="text" class="form-control" id="vllength" name="vllength" placeholder="Digite o comprimento do Produto" required>
-                            <label class="mt-4"   for="name">Peso</label>
+                            <label class="mt-4" for="name">Peso</label>
                             <input type="text" class="form-control" id="vlweigth" name="vlweigth" placeholder="Digite o peso do Produto" required>
+                            <label class="mt-4" for="category_id">Categoria do Produto:</label>
+                            <select id="category_id" name="category_id" required>
+                                @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ isset($product) && $product->category_id == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                                @endforeach
+                            </select>
+                            <br>
                             <label class="mt-4" for="image">Imagem do Produto:</label>
                             <input type="file" name="image" id="image">
+                            
                         </div>
                     </div>
                     <!-- /.box-body -->

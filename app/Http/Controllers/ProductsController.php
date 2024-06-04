@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
+use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,9 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('admin.create-products');
+
+        $categories = Category::all();
+        return view('admin.create-products', \compact('categories'));
     }
 
     /**
@@ -40,6 +43,7 @@ class ProductsController extends Controller
             'vllength' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'vlweigth' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
 
@@ -70,7 +74,7 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = Products::findOrFail($id);
-        return view('admin.update-products', \compact('product'));
+        return view('admin.update-products', \compact('product', 'categories'));
     }
 
     /**
@@ -86,6 +90,7 @@ class ProductsController extends Controller
             'vllength' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'vlweigth' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         $product = Products::findOrFail($id);
