@@ -3,7 +3,7 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-<h1>Editar Categoria</h1>
+
 @stop
 
 @section('content')
@@ -34,6 +34,15 @@
                             <input type="text" class="form-control" id="vllength" name="vllength" placeholder="Digite o Digite o comprimento do Produto" value="{{ $product->vllength }}">
                             <label for="name">Peso</label>
                             <input type="text" class="form-control" id="vlweigth" name="vlweigth" placeholder="Digite o peso do Produto" value="{{ $product->vlweigth }}">
+                            <label class="mt-4" for="category_id">Categoria do Produto:</label>
+                            <select id="category_id" name="category_id" required>
+                                @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ isset($product) && $product->category_id == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                                @endforeach
+                            </select>
+                            <br>
                             <label class="mt-4" for="image">Imagem do Produto:</label>
                             <input type="file" name="image" id="image">
                         </div>

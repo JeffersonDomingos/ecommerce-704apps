@@ -65,7 +65,15 @@
     </div>
   </div>
 
+  
+
 </section>
+
+@if(session('error'))
+    <script>
+        alert("{{ session('error') }}");
+    </script>
+@endif
 <!-- /.content -->
 
 <!-- /.content-wrapper -->

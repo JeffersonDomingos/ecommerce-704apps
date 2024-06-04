@@ -74,6 +74,8 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = Products::findOrFail($id);
+        $categories = Category::all();
+
         return view('admin.update-products', \compact('product', 'categories'));
     }
 
@@ -126,4 +128,10 @@ class ProductsController extends Controller
         return redirect()->route('produtos.index')
             ->with('success', 'Produto deletado com sucesso.');
     }
+
+    public function listProducts()
+{
+    $products = Products::latest()->take(5)->get();
+    return view('index', compact('products'));
+}
 }

@@ -1,4 +1,4 @@
-<main>
+<!-- <main>
   <div data-bs-ride="carousel" id="carouselExampleFade" class="carousel slide carousel-fade">
     <div class="carousel-inner carrosel">
       <div class="carousel-item active">
@@ -22,101 +22,41 @@
       @section('content')
       <!-- Content Wrapper. Contains page content -->
 
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <h1>
-          Lista de Produtos
-        </h1>
-        <ol class="breadcrumb">
-          <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-          <li class="active"><a href="/ecommerce/admin/products">Produtos</a></li>
-        </ol>
-      </section>
-
-      <!-- Main content -->
-
-    </div>
-    <section class="content">
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="box box-primary">
+<!-- Content Header (Page header) -->
 
 
-            <div class="box-body no-padding">
-              <table class="table table-striped">
-
-                <tbody>
-                  @foreach($products as $product)
-                  <tr>
-                    <td>{{ $product->id }}</td>
-                    <td>{{ $product->name }}</td>
-                    <td>{{ $product->price }}</td>
-                    <td>{{ $product->vlwidth }}</td>
-                    <td>{{ $product->vlheigth }}</td>
-                    <td>{{ $product->vllength }}</td>
-                    <td>{{ $product->vlweigth }}</td>
-                    <td style="vertical-align: middle;">
-                      @if ($product->image)
-                      <img style="display: block; margin-right: auto; margin-left: auto" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" width="100">
-                      @endif
-                    </td>
-                    <td>
-                    </td>
-                  </tr>
-                  @endforeach
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-        </div>
+<main class="w-[80%] mx-auto flex-col flex items-start gap-3 mt-12">
+  <h2 class="text-xl text-gray-800 font-bold">Últimos <span class="text-blue-500">lançamentos:</span></h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+    @foreach($products as $product)
+    <x-bladewind::card id="{{ $product->id }}" class="rounded-xl p-0 flex flex-col cursor-pointer min-w-[220px] max-w-[220px] h-[300px] hover:shadow-gray-300">
+      @if ($product->image)
+      <img class="rounded-xl rounded-b-none h-[65%] p-4 object-contain bg-gray-300 w-full" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+      @endif
+      <div class="items-start px-4 pt-4 flex flex-col justify-start gap-1">
+        <p class="font-semibold text-base line-clamp-1">{{ $product->name }}</p>
+        <p class="font-extrabold text-base line-clamp-1">R$ {{ $product->price }}</p>
       </div>
-
-    </section>
+    </x-bladewind::card>
+    @endforeach
+  </div>
 </main>
 
-<section class="content">
-
-  <div class="row">
-    <div class="col-md-12">
-      <div class="box box-primary">
-
-
-        <div class="box-body no-padding">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th style="width: 10px">ID</th>
-                <th>Nome da Categoria</th>
-                <th style="width: 140px">&nbsp;</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($categories as $category)
-              <tr>
-                <td>{{ $category->id }}</td>
-                <td>{{ $category->name }}</td>
-                <td class="text-center" style="vertical-align: middle;">
-                  @if ($category->category_image)
-                  <img style="display: block; margin-right: auto; margin-left: auto" src="{{ asset('storage/' . $category->category_image) }}" alt="{{ $category->name }}" width="100">
-                  @endif
-                </td>
-                <td>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-        <!-- /.box-body -->
+<section class="mt-12 w-[80%] mx-auto flex-col flex items-start gap-3">
+  <h2 class="text-xl text-gray-800 font-bold">Top <span class="text-blue-500">Categorias:</span></h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+    @foreach($categories as $category)
+    <div class="flex-col flex items-center gap-2">
+      <x-bladewind::card id="{{ $category->id }}" class="p-0 flex flex-col cursor-pointer min-w-[130px] max-w-[130px] h-[130px] rounded-full hover:shadow-gray-300">
+        @if ($category->category_image)
+        <img class="h-[130px] rounded-full p-2 object-cover bg-gray-300 w-full" src="{{ asset('storage/' . $category->category_image) }}" alt="{{ $category->name }}">
+        @endif
+      </x-bladewind::card>
+      <div class="items-start px-4 pt-4 flex flex-col justify-start gap-1">
+        <p class="font-semibold text-base line-clamp-1">{{ $category->name }}</p>
       </div>
     </div>
+    @endforeach
   </div>
-  <x-bladewind::button>Save User</x-bladewind::button>
-
 </section>
 
-
-
-@include('footer')

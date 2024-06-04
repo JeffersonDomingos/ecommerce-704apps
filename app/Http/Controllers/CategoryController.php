@@ -106,6 +106,11 @@ class CategoryController extends Controller
     {
 
         $category = Category::findOrFail($id);
+
+        if ($category->products()->count() > 0) {
+            return redirect()->route('categorias.index')->with('error', 'Não é possível excluir a categoria porque existem produtos relacionados a ela.');
+        }
+
         $category->delete();
 
         return redirect()->route('categorias.index')

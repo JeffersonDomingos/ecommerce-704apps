@@ -9,7 +9,8 @@
         "jeroennoten/laravel-adminlte": "^3.11",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
-        "laravel/ui": "^4.5"
+        "laravel/ui": "^4.5",
+        "mkocansey/bladewind": "^2.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
