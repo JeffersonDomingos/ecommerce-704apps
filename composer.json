@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.2",
         "blade-ui-kit/blade-icons": "^1.6",
+        "codeat3/blade-google-material-design-icons": "^1.19",
         "davidhsianturi/blade-bootstrap-icons": "^1.5",
         "jeroennoten/laravel-adminlte": "^3.11",
         "laravel/framework": "^11.0",
