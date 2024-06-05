@@ -134,4 +134,5 @@ class ProductsController extends Controller
     $products = Products::latest()->take(5)->get();
     return view('index', compact('products'));
 }
+
 }
