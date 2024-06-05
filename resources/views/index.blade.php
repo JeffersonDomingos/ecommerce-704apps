@@ -1,26 +1,30 @@
  <main>
  <!-- <div id="default-carousel" class="relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
+  
+
+<div id="default-carousel" class="relative w-[80%] mt-10 mx-auto" data-carousel="slide">
+    <!-- Carousel wrapper -->
     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
          <!-- Item 1 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="https://i.pinimg.com/originals/fa/45/96/fa4596ad9a9d39901eeb455ed4f74e44.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 2 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="https://i.pinimg.com/originals/fa/45/96/fa4596ad9a9d39901eeb455ed4f74e44.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 3 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="https://i.pinimg.com/originals/fa/45/96/fa4596ad9a9d39901eeb455ed4f74e44.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 4 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="https://i.pinimg.com/originals/fa/45/96/fa4596ad9a9d39901eeb455ed4f74e44.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 5 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="https://i.pinimg.com/originals/fa/45/96/fa4596ad9a9d39901eeb455ed4f74e44.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
     </div>
     <!-- Slider indicators -->
@@ -48,7 +52,8 @@
             <span class="sr-only">Next</span>
         </span>
     </button>
-</div> -->
+</div>
+
 
       @section('content')
       <!-- Content Wrapper. Contains page content -->
@@ -58,11 +63,11 @@
 
 <main class="w-[80%] mx-auto flex-col flex items-start gap-3 mt-12">
   <h2 class="text-xl text-gray-800 font-bold">Últimos <span class="text-blue-500">lançamentos:</span></h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-6">
+  <div class="flex justify-between w-full">
     @foreach($products as $product)
-    <x-bladewind::card id="{{ $product->id }}" class="rounded-xl p-0 pb-4 flex flex-col cursor-pointer min-w-[220px] max-w-[220px] min-h-[300px] hover:shadow-gray-300">
+    <x-bladewind::card id="{{ $product->id }}" class="rounded-xl p-0 pb-4 flex flex-col cursor-pointer min-w-[250px] max-w-[250px] min-h-[300px] hover:shadow-gray-400 hover:border-2 hover:border-blue-500 transition-all">
       @if ($product->image)
-      <img class="rounded-xl rounded-b-none h-[65%] p-4 object-contain bg-gray-300 w-full" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+      <img class="rounded-xl rounded-b-none h-[65%] p-4 object-contain bg-gray-100 w-full" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
       @endif
       <div class="pb-1 mx-3 border-b border-b-gray-200 items-start pt-4 flex flex-col justify-start gap-1">
         <p class="font-semibold text-base line-clamp-1">{{ $product->name }}</p>
