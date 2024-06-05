@@ -21,7 +21,9 @@
             <p class="text-xl font-bold">Categorias</p>
             <div class="flex-col flex items-start gap-2">
                 @foreach($categories as $category)
+                <a href="/categories-page/"/>
                 <p class="hover:underline cursor-pointer text-base line-clamp-1">{{ $category->name }}</p>
+                
                 @endforeach
             </div>
         </div>

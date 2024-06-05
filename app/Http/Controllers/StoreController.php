@@ -32,4 +32,11 @@ class StoreController extends Controller
 
         return view('category-page', \compact('categories'));
     }
+
+    public function listProducts()
+{
+    $products = Products::latest()->take(5)->get();
+    return view('index', compact('products'));
+}
+
 }

@@ -129,10 +129,4 @@ class ProductsController extends Controller
             ->with('success', 'Produto deletado com sucesso.');
     }
 
-    public function listProducts()
-{
-    $products = Products::latest()->take(5)->get();
-    return view('index', compact('products'));
-}
-
 }

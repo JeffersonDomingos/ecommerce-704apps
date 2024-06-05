@@ -18,6 +18,8 @@
     </div>
     @endforeach
   </div>
+  
 </section>
 
 @include('footer')
+
