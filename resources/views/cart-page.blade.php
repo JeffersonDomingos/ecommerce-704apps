@@ -7,9 +7,9 @@
 @section('content')
 <main class="w-[80%] mx-auto flex-col flex items-start gap-3 mt-20">
   <h2 class="text-2xl text-gray-800 font-bold border-b-2 pb-2 mb-4 w-full text-left border-b-blue-500">Meu Carrinho</h2>
-  <table class="w-full border-collapse border border-gray-300">
-    <thead>
-      <tr class="bg-gray-100">
+  <table class="w-full border-collapse border border-gray-300 rounded-xl">
+    <thead class="rounded-xl">
+      <tr class="bg-blue-500 text-white">
         <th class="border border-gray-300 p-2">Produto</th>
         <th class="border border-gray-300 p-2">Nome</th>
         <th class="border border-gray-300 p-2">Preço</th>
@@ -21,7 +21,7 @@
     <tbody>
       @foreach($cartData as $item)
         <tr>
-          <td class="border border-gray-300 p-2">
+          <td class="border border-gray-300 p-2 flex justify-center">
             <img src="{{ asset('storage/' . $item['product']->image) }}" alt="{{ $item['product']->name }}" class="w-16 h-16 object-cover">
           </td>
           <td class="border border-gray-300 p-2">{{ $item['product']->name }}</td>
@@ -31,38 +31,56 @@
           <td class="border border-gray-300 p-2">
             <form action="{{ route('cart.increaseQuantity', $item['product']->id) }}" method="POST" style="display:inline;">
               @csrf
-              <button type="submit" class="bg-blue-500 text-white px-2 py-1">+</button>
+              <button type="submit" class="text-center bg-gray-500 text-white w-7 text-lg hover:bg-gray-600 rounded-lg transition-all">+</button>
             </form>
             <form action="{{ route('cart.decreaseQuantity', $item['product']->id) }}" method="POST" style="display:inline;">
               @csrf
-              <button type="submit" class="bg-red-500 text-white px-2 py-1">-</button>
+              <button type="submit" class="text-center bg-gray-500 text-white w-7 text-lg hover:bg-gray-600 rounded-lg transition-all">-</button>
             </form>
           </td>
         </tr>
       @endforeach
     </tbody>
   </table>
-   <!-- Botão de Finalizar Compra -->
-   <button class="bg-green-500 text-white px-4 py-2 mt-4" onclick="document.getElementById('confirmModal').classList.remove('hidden')">Finalizar Compra</button>
+ 
+   <br>
+   <x-bladewind::button class="w-[190px]" onclick="showConfirmModal()">Finalizar Compra</x-bladewind::button>
+   <a href="/">
+   <x-bladewind::button class="w-[190px]">Continue comprando</x-bladewind::button>
+   </a>
 
-<!-- Modal de Confirmação -->
-<div id="confirmModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden">
+<div id="confirmModal" class="fixed inset-0 items-center justify-center bg-gray-900 bg-opacity-50 hidden">
   <div class="bg-white rounded-lg p-6 w-1/3">
     <h3 class="text-xl font-bold mb-4">Confirmação de Compra</h3>
     <p class="mb-4">Tem certeza de que deseja finalizar a compra?</p>
-    <form action="{{ route('cart.checkout') }}" method="POST">
+    <form action="{{ route('cart.checkout') }}" method="POST" class="flex gap-2 justify-center">
       @csrf
-      <button type="submit" class="bg-green-500 text-white px-4 py-2">Confirmar</button>
-      <button type="button" class="bg-red-500 text-white px-4 py-2" onclick="document.getElementById('confirmModal').classList.add('hidden')">Cancelar</button>
+      <button type="submit" class="text-white bg-blue-600 w-28 h-9 rounded-3xl hover:bg-blue-700 transition-all">Confirmar</button>
+      <button type="button" class="text-white bg-red-600 hover:bg-red-700 transition-all w-28 h-9 rounded-3xl" onclick="hideConfirmModal()">Cancelar</button>
     </form>
   </div>
 </div>
+
 
 </main>
 @endsection
 
   
 </section>
+
+<script>
+    function showConfirmModal() {
+        const modal = document.getElementById('confirmModal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+  function hideConfirmModal() {
+      const modal = document.getElementById('confirmModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+  }
+</script>
 
 
 

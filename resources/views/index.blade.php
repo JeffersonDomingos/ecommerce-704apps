@@ -1,9 +1,8 @@
 <main>
  <!-- <div id="default-carousel" class="relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
-  
 
-<div id="default-carousel" class="relative w-[80%] mt-10 mx-auto" data-carousel="slide">
+    <div id="default-carousel" class="relative w-[80%] mt-10 mx-auto" data-carousel="slide">
     <!-- Carousel wrapper -->
     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
          <!-- Item 1 -->
@@ -65,9 +64,9 @@
   <h2 class="text-2xl text-gray-800 font-bold border-b-2 pb-2 mb-4 w-full text-left border-b-blue-500">Últimos <span class="text-blue-500">lançamentos:</span></h2>
   <div class="flex justify-between w-full">
     @foreach($products as $product)
-    <x-bladewind::card id="{{ $product->id }}" class="rounded-xl p-0 pb-4 flex flex-col cursor-pointer min-w-[220px] max-w-[220px] min-h-[300px] hover:shadow-gray-400 hover:border-2 hover:border-blue-500 transition-all">
+    <x-bladewind::card id="{{ $product->id }}" class="rounded-xl p-0 pb-4 flex flex-col min-w-[220px] max-w-[220px] min-h-[300px] hover:shadow-gray-400 hover:border-2 hover:border-blue-500 transition-all">
       @if ($product->image)
-      <img class="rounded-xl rounded-b-none h-[65%] p-4 object-contain bg-gray-100 w-full" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+      <img class="rounded-xl rounded-b-none h-[250px] p-4 object-contain bg-gray-100 w-full" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
       @endif
       <div class="pb-1 mx-3 border-b border-b-gray-200 items-start pt-4 flex flex-col justify-start gap-1">
         <p class="font-semibold text-base line-clamp-1">{{ $product->name }}</p>
@@ -75,8 +74,8 @@
       </div>
       <form action="{{ route('cart.addToCart', $product->id) }}" method="POST">
         @csrf
-      <button type="submit" class="mx-auto flex py-2 mt-3" type="secondary">
-        <div class="flex items-center justify-center gap-3">
+      <button type="submit" class="mx-auto flex mt-3 items-center gap-2 hover:bg-blue-500 py-2 px-7 rounded-3xl font-bold hover:text-white transition-all" type="secondary">
+      <i class="fa-solid fa-cart-shopping"></i>
        Adicionar
 </button>
       </form>
@@ -90,11 +89,11 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-6">
     @foreach($categories as $category)
     <div class="flex-col flex items-center gap-2">
-      <x-bladewind::card id="{{ $category->id }}" class="p-0 flex flex-col cursor-pointer min-w-[170px] max-w-[170px] h-[170px] rounded-full hover:shadow-gray-300">
+      <div id="{{ $category->id }}"  class=" p-0 flex flex-col cursor-pointer min-w-[170px] max-w-[170px] h-[170px] rounded-full hover:shadow-gray-300">
         @if ($category->category_image)
         <img class="h-[170px] rounded-full p-2 object-cover bg-gray-300 w-full" src="{{ asset('storage/' . $category->category_image) }}" alt="{{ $category->name }}">
         @endif
-      </x-bladewind::card>
+      </div>
       <div class="items-start px-4 pt-4 flex flex-col justify-start gap-1">
         <p class="font-semibold text-base line-clamp-1">{{ $category->name }}</p>
       </div>

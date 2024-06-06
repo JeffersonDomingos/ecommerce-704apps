@@ -13,11 +13,9 @@ class CartController extends Controller
     {
         $cartItems = session()->get('cart', []);
 
-        // Carregar os produtos associados aos itens do carrinho
         $productIds = array_keys($cartItems);
         $products = Products::whereIn('id', $productIds)->get();
 
-        // Associar produtos aos itens do carrinho
         $cartData = [];
         foreach ($products as $product) {
             if (isset($cartItems[$product->id])) {

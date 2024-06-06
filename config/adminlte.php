@@ -315,7 +315,14 @@ return [
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
-        
+
+        ['header' => 'Ações'],
+        [
+            'text' => 'Acessar ECOMMERCE',
+            'icon_color' => 'gray',
+            'url' => '/',
+        ],
+
         ['header' => 'Ações'],
         [
             'text' => 'Usuários',
