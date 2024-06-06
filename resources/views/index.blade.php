@@ -1,10 +1,7 @@
-
-
 <main>
  <!-- <div id="default-carousel" class="relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
 
-    <!-- <link rel="stylesheet" href="{{ asset('public/css/style.css') }}"> -->
 
     <div id="default-carousel" class="relative w-[80%] mt-10 mx-auto" data-carousel="slide">
     <!-- Carousel wrapper -->
