@@ -1,6 +1,10 @@
+
+
 <main>
  <!-- <div id="default-carousel" class="relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
+
+    <!-- <link rel="stylesheet" href="{{ asset('public/css/style.css') }}"> -->
 
     <div id="default-carousel" class="relative w-[80%] mt-10 mx-auto" data-carousel="slide">
     <!-- Carousel wrapper -->
@@ -62,7 +66,7 @@
 
 <main class="w-[80%] mx-auto flex-col flex items-start gap-3 mt-20">
   <h2 class="text-2xl text-gray-800 font-bold border-b-2 pb-2 mb-4 w-full text-left border-b-blue-500">Últimos <span class="text-blue-500">lançamentos:</span></h2>
-  <div class="flex justify-between w-full">
+  <div class="flex justify-between w-full flex-wrap max-sm:justify-center gap-5">
     @foreach($products as $product)
     <x-bladewind::card id="{{ $product->id }}" class="rounded-xl p-0 pb-4 flex flex-col min-w-[220px] max-w-[220px] min-h-[300px] hover:shadow-gray-400 hover:border-2 hover:border-blue-500 transition-all">
       @if ($product->image)
@@ -86,7 +90,7 @@
 
 <section class="mt-20 w-[80%] mx-auto flex-col flex items-start gap-3">
   <h2 class="text-2xl text-gray-800 font-bold border-b-2 pb-2 mb-4 w-full text-left border-b-blue-500">Top <span class="text-blue-500">Categorias:</span></h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-6">
+  <div class="flex gap-7 flex-wrap max-sm:justify-center">
     @foreach($categories as $category)
     <div class="flex-col flex items-center gap-2">
       <div id="{{ $category->id }}"  class=" p-0 flex flex-col cursor-pointer min-w-[170px] max-w-[170px] h-[170px] rounded-full hover:shadow-gray-300">
@@ -100,4 +104,13 @@
     </div>
     @endforeach
   </div>
+
+  <div class="floating-icon">
+        <a href="/cart-page">
+        <i class="fa-solid fa-cart-shopping flex items-center justify-center text-2xl w-14 h-14 rounded-full bg-gray-200 shadow-2xl text-blue-600"></i>
+        </a>
+    </div>
+
 </section>
+
+</main>
