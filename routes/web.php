@@ -3,7 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\TypeCategoryController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -35,4 +35,12 @@ Route::get('/cart-page', function () {
 
 Route::get('/', [StoreController::class, 'index'])->name('store.index');
 
+Route::post('/cart/add/{product}', [CartController::class, 'addToCart'])->name('cart.addToCart');
 
+Route::get('/cart-page', [CartController::class, 'index'])->name('cart.index');
+
+Route::post('/cart/increase/{product}', [CartController::class, 'increaseQuantity'])->name('cart.increaseQuantity');
+
+Route::post('/cart/decrease/{product}', [CartController::class, 'decreaseQuantity'])->name('cart.decreaseQuantity');
+
+Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');

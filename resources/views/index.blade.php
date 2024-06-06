@@ -73,12 +73,13 @@
         <p class="font-semibold text-base line-clamp-1">{{ $product->name }}</p>
         <p class="font-extrabold text-base line-clamp-1">R$ {{ $product->price }}</p>
       </div>
-      <x-bladewind::button class="mx-auto flex py-2 mt-3" type="secondary">
+      <form action="{{ route('cart.addToCart', $product->id) }}" method="POST">
+        @csrf
+      <button type="submit" class="mx-auto flex py-2 mt-3" type="secondary">
         <div class="flex items-center justify-center gap-3">
        Adicionar
-        </div>
-
-      </x-bladewind::button>
+</button>
+      </form>
     </x-bladewind::card>
     @endforeach
   </div>
