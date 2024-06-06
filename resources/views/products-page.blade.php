@@ -4,7 +4,7 @@
 
 <main class="w-[80%] mx-auto flex-col flex items-start gap-3 mt-12">
   <h2 class="text-xl text-gray-800 font-bold">Todos os <span class="text-blue-500">produtos:</span></h2>
-  <div class="flex justify-between w-full flex-wrap gap-5 max-sm:justify-center">
+  <div class="flex justify-center w-full flex-wrap gap-5 max-sm:justify-center">
     @foreach($products as $product)
     <x-bladewind::card id="{{ $product->id }}" class="rounded-xl p-0 pb-4 flex flex-col min-w-[220px] max-w-[250px] min-h-[300px] hover:shadow-gray-400 hover:border-2 hover:border-blue-500 transition-all">
       @if ($product->image)
