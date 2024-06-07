@@ -80,3 +80,14 @@ footer {
 .floating-icon a:hover {
     background-color: #f0f0f0;
 }
+
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.footer-css {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

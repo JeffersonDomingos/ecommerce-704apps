@@ -4,6 +4,5 @@
 
 @include('header')
 @include('index')
-@include('footer')
 
 @endsection

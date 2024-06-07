@@ -29,7 +29,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body>
+<body class="page-container">
     <div id="app">
        
  <main >
