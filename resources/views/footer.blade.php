@@ -17,16 +17,6 @@
                 <img src="{{ asset('img/logo_branca.png') }}" alt="Logo 704Apps" class="mt-6 w-40">
             </div>
         </div>
-        <div class="flex-col flex items-start gap-2">
-            <p class="text-xl font-bold">Categorias</p>
-            <div class="flex-col flex items-start gap-2">
-                @foreach($categories as $category)
-                <a href="/categories-page/"/>
-                <p class="hover:underline cursor-pointer text-base line-clamp-1">{{ $category->name }}</p>
-                
-                @endforeach
-            </div>
-        </div>
     </section>
 </footer>
 

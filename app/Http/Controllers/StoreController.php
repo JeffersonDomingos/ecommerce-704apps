@@ -12,7 +12,7 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $products = Products::latest()->take(4)->get();
+        $products = Products::latest()->take(5)->get();
 
         $categories = Category::all();
 

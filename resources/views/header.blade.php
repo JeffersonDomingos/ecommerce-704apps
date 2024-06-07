@@ -9,7 +9,7 @@
 <body>
     <header>
         <nav class="bg-white border-gray-200 dark:bg-gray-900 py-4">
-            <div class="flex flex-wrap items-center justify-between w-[80%] mx-auto">
+            <div class="mx-auto flex flex-wrap items-center justify-between w-[80%]">
                 <a href="/" class="flex items-center text-blue-950 font-bold text-2xl">
                     <img src="{{ asset('img/logo1.png') }}" alt="Logo 704Apps" class="w-20">    
                     <h1 class="mt-2">704ECOMMERCE</h1> 
@@ -17,13 +17,13 @@
                 <div class="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
                     @guest
                         @if (Route::has('login'))
-                            <a href="{{ route('login') }}" "><x-bladewind::button>Login Admin</x-bladewind::button></a>
+                            <a href="{{ route('login') }}" "><x-bladewind::button outline="true">Login Admin</x-bladewind::button></a>
                         @endif
                     @else
                         <div class="flex items-center space-x-2">
                             
                             <a href="{{ route('logout') }}" 
-                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><x-bladewind::button outline="true">Logout</x-bladewind::button></a>
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><x-bladewind::button color="red" outline="true">Logout</x-bladewind::button></a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                                 @csrf
                             </form>

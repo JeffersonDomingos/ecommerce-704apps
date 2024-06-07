@@ -24,6 +24,7 @@
     </x-bladewind::card>
     @endforeach
   </div>
-</main>
 
+</main>
+@include('footer')
 

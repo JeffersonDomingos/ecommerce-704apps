@@ -63,10 +63,12 @@
 
 
 </main>
+@include('footer') 
 @endsection
 
-  
+ 
 </section>
+
 
 <script>
     function showConfirmModal() {
@@ -81,6 +83,5 @@
       modal.classList.remove('flex');
   }
 </script>
-
 
 
