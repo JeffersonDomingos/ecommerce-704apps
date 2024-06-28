@@ -47,7 +47,7 @@
                 
                 
                 <td>
-                  <a href="/usuarios/{{$user->id}}/edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
+                  <a href="/admin/usuarios/{{$user->id}}/edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
                   <form action="{{ route('usuarios.destroy', $user->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')

@@ -53,7 +53,7 @@ class Pay704Service {
 
 
         } catch (\Exception $e) {
-            \dd($e);
+            
             Log::info('WEBPAGUE exception : ' . json_encode($e));
             throw  new \Exception('Erro ao processar pagamento, tente novamente');
         }
