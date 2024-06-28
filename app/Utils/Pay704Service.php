@@ -2,6 +2,9 @@
 
 namespace App\Utils;
 
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+
 class Pay704Service {
 
     protected $url;
@@ -9,14 +12,54 @@ class Pay704Service {
     protected $secret;
     protected $type;
 
-    public function __constructst(string $url, string $id, string $secret, bool $type) {
+    public function __construct(string $id, string $secret, bool $type=true) {
 
-        $this->url = $url;
         $this->id = $id;
         $this->secret = $secret;
         $this->type = $type;
         
+        if ($type) {
+            $this->url = env('API_URL_704PAY_PROD');
+        
+        } else {
+            $this->url = "https://704pay-api.dev.704apps.com.br/";
+        }
+        
     }
+
+ public function pixPayment($paymentData = [])
+    {
+        
+        try {
+            if (empty($paymentData) || empty($this->id) || empty($this->secret)) {
+                throw new \Exception('Error processing payment. Please try again.');
+            }
+            
+            $response = Http::withHeaders(
+                [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json",
+                    "id"=> $this->id,
+                    "secret"=> $this->secret,
+
+                ]
+            )->post($this->url . 'v1/payment/sales/pix', $paymentData);
+            $payment = json_decode($response->body(), true);
+                    
+
+            Log::info('WEBPAGUE success: ' . json_encode($payment));
+            
+            return $payment['response'];
+
+
+        } catch (\Exception $e) {
+            \dd($e);
+            Log::info('WEBPAGUE exception : ' . json_encode($e));
+            throw  new \Exception('Erro ao processar pagamento, tente novamente');
+        }
+    }
+
+
 
 }
 
