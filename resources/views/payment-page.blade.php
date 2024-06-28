@@ -6,7 +6,26 @@
 
 @section('content')
 
-<footer class="bg-blue-500 w-full py-10 mt-10">
+<div class="flex justify-center items-center">
+    <div class="w-full flex flex-col">
+    <div></div>
+    <label class="mt-4 text-sm" for="name">Nome completo:</label>    
+    <input class="w-1/4 pl-2 rounded-lg py-2"/>
+    <label class="mt-4 text-sm" for="name">CPF:</label>    
+    <input class="w-1/4 pl-2 rounded-lg py-2"/>
+    <label class="mt-4 text-sm" for="name">E-mail:</label>    
+    <input class="w-1/4 pl-2 rounded-lg py-2"/>
+    
+
+        
+        
+        
+    </div>
+    
+    <img src="https://picsum.photos/200/300" alt="teste">
+</div>
+
+<!-- <footer class="bg-blue-500 w-full py-10 mt-10">
         <section class="flex w-[80%] flex-wrap justify-start gap-16 items-start mx-auto">
             <div class="flex-col flex items-start gap-2">
                 <p class="text-xl font-bold">ECOMMERCE 704Apps</p>
@@ -26,7 +45,7 @@
                 </div>
             </div>
         </section>
-    </footer>
+    </footer> -->
 
 @endsection
 
