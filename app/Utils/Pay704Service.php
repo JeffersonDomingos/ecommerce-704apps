@@ -10,20 +10,13 @@ class Pay704Service {
     protected $url;
     protected $id;
     protected $secret;
-    protected $type;
 
-    public function __construct(string $id, string $secret, bool $type=true) {
+    public function __construct(string $id, string $secret, string $url) {
 
         $this->id = $id;
         $this->secret = $secret;
-        $this->type = $type;
+        $this->url = $url;
         
-        if ($type) {
-            $this->url = env('API_URL_704PAY_PROD');
-        
-        } else {
-            $this->url = "https://704pay-api.dev.704apps.com.br/";
-        }
         
     }
 

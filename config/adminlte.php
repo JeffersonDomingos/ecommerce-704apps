@@ -366,6 +366,13 @@ return [
                 ],
             ],
         ],
+
+        ['header' => 'Configurações'],
+        [
+            'text' => 'Adquirentes',
+            'icon_color' => 'green',
+            'url' => '/admin/adquires',
+        ],
     ],
 
     /*

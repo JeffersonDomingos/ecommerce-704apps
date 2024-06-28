@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdquireController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProductsController;
@@ -25,6 +26,8 @@ Route::resource('/admin/produtos', ProductsController::class);
 
 Route::resource('/admin/usuarios', UserController::class);
 
+Route::resource('/admin/adquires', AdquireController::class);
+
 Route::get('/products-page', [StoreController::class, 'listProductsPages'])->name('store.listProductsPages');
 
 Route::get('/categories-page', [StoreController::class, 'listCategoryPages'])->name('store.listCategoryPages');
@@ -44,3 +47,7 @@ Route::post('/cart/increase/{product}', [CartController::class, 'increaseQuantit
 Route::post('/cart/decrease/{product}', [CartController::class, 'decreaseQuantity'])->name('cart.decreaseQuantity');
 
 Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+
+Route::get('/payment-page', function () {
+    return view('payment-page');
+});
